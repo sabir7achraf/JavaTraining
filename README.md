@@ -302,3 +302,130 @@ This document provides an overview of the commonly used methods in the `ArrayLis
 | `iterator()`                  | O(1)            | O(1)                          |
 | `subList(int from, int to)`   | O(1)            | O(1)                          |
 
+# Set Methods in Java (HashSet)
+
+This document provides an overview of the commonly used methods in the `HashSet` class in Java, along with their time complexities.
+
+---
+
+## 1. Addition Methods
+
+### `boolean add(E e)`
+- **Description**: Adds an element to the set if it is not already present.
+- **Time Complexity**:
+  - **Average**: **O(1)**.
+  - **Worst Case**: **O(n)** (in case of collisions and rehashing).
+
+---
+
+## 2. Removal Methods
+
+### `boolean remove(Object o)`
+- **Description**: Removes a specific element from the set if it is present.
+- **Time Complexity**:
+  - **Average**: **O(1)**.
+  - **Worst Case**: **O(n)** (in case of collisions).
+
+### `void clear()`
+- **Description**: Removes all elements from the set.
+- **Time Complexity**: **O(n)** (where `n` is the number of elements in the set).
+
+---
+
+## 3. Search Methods
+
+### `boolean contains(Object o)`
+- **Description**: Checks if the set contains a specific element.
+- **Time Complexity**:
+  - **Average**: **O(1)**.
+  - **Worst Case**: **O(n)** (in case of collisions).
+
+---
+
+## 4. Size and Check Methods
+
+### `int size()`
+- **Description**: Returns the number of elements in the set.
+- **Time Complexity**: **O(1)**.
+
+### `boolean isEmpty()`
+- **Description**: Checks if the set is empty.
+- **Time Complexity**: **O(1)**.
+
+---
+
+## 5. Iteration Methods
+
+### `Iterator<E> iterator()`
+- **Description**: Returns an iterator over the elements of the set.
+- **Time Complexity**:
+  - **To obtain the iterator**: **O(1)**.
+  - **To traverse all elements**: **O(n)**.
+
+---
+
+## 6. Conversion Methods
+
+### `Object[] toArray()`
+- **Description**: Returns an array containing all elements of the set.
+- **Time Complexity**: **O(n)**.
+
+### `<T> T[] toArray(T[] a)`
+- **Description**: Returns an array containing all elements of the set, with a specific type.
+- **Time Complexity**: **O(n)**.
+
+---
+
+## 7. Set Manipulation Methods
+
+### `boolean addAll(Collection<? extends E> c)`
+- **Description**: Adds all elements of a collection to the set.
+- **Time Complexity**:
+  - **Average**: **O(k)** (where `k` is the size of the collection).
+  - **Worst Case**: **O(n + k)**.
+
+### `boolean removeAll(Collection<?> c)`
+- **Description**: Removes all elements from the set that are present in the specified collection.
+- **Time Complexity**:
+  - **Average**: **O(n * k)** (where `k` is the size of the collection).
+  - **Worst Case**: **O(n * k)**.
+
+### `boolean retainAll(Collection<?> c)`
+- **Description**: Retains only the elements in the set that are present in the specified collection.
+- **Time Complexity**:
+  - **Average**: **O(n * k)** (where `k` is the size of the collection).
+  - **Worst Case**: **O(n * k)**.
+
+---
+
+## 8. Cloning Methods
+
+### `Object clone()`
+- **Description**: Returns a shallow copy of the set.
+- **Time Complexity**: **O(n)**.
+
+---
+
+## Summary of Time Complexities
+
+| Method                        | Average Case    | Worst Case       |
+|-------------------------------|-----------------|------------------|
+| `add(E e)`                    | O(1)            | O(n)             |
+| `remove(Object o)`            | O(1)            | O(n)             |
+| `contains(Object o)`          | O(1)            | O(n)             |
+| `size()`                      | O(1)            | O(1)             |
+| `isEmpty()`                   | O(1)            | O(1)             |
+| `iterator()`                  | O(1) to obtain  | O(n) to traverse |
+| `toArray()`                   | O(n)            | O(n)             |
+| `addAll(Collection<?>)`       | O(k)            | O(n + k)         |
+| `removeAll(Collection<?>)`    | O(n * k)        | O(n * k)         |
+| `retainAll(Collection<?>)`    | O(n * k)        | O(n * k)         |
+| `clone()`                     | O(n)            | O(n)             |
+
+---
+
+## Notes:
+- The **average case** time complexity for basic operations (`add`, `remove`, `contains`) is **O(1)** due to the hash table implementation.
+- The **worst case** time complexity is **O(n)** when all elements have the same hash (collision), effectively turning the hash table into a linked list.
+- Bulk operations (`addAll`, `removeAll`, `retainAll`) depend on the size of the collection passed as a parameter (`k`).
+
