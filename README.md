@@ -126,3 +126,179 @@ This document provides an overview of the commonly used methods in the `Arrays` 
 | Stream                | O(1)            |
 | Parallel Prefix       | O(n)            |
 | Miscellaneous         | O(n) or O(1)    |
+
+# List Methods in Java (ArrayList and LinkedList)
+
+This document provides an overview of the commonly used methods in the `ArrayList` and `LinkedList` classes in Java, along with their time complexities.
+
+---
+
+## 1. Addition Methods
+
+### `boolean add(E e)`
+- **Description**: Adds an element to the end of the list.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)** on average, but **O(n)** in case of internal array resizing.
+  - **LinkedList**: **O(1)**.
+
+### `void add(int index, E element)`
+- **Description**: Adds an element at a specific index.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)** (shifting of elements).
+  - **LinkedList**: **O(1)** if the index is near the beginning or end, otherwise **O(n)**.
+
+### `boolean addAll(Collection<? extends E> c)`
+- **Description**: Adds all elements of a collection to the end of the list.
+- **Time Complexity**:
+  - **ArrayList**: **O(k)** (where `k` is the size of the collection).
+  - **LinkedList**: **O(k)**.
+
+### `boolean addAll(int index, Collection<? extends E> c)`
+- **Description**: Adds all elements of a collection at a specific index.
+- **Time Complexity**:
+  - **ArrayList**: **O(n + k)** (where `k` is the size of the collection).
+  - **LinkedList**: **O(n + k)**.
+
+---
+
+## 2. Removal Methods
+
+### `E remove(int index)`
+- **Description**: Removes the element at a specific index.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)** (shifting of elements).
+  - **LinkedList**: **O(1)** if the index is near the beginning or end, otherwise **O(n)**.
+
+### `boolean remove(Object o)`
+- **Description**: Removes the first occurrence of a specific element.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)** (search + shifting).
+  - **LinkedList**: **O(n)** (search).
+
+### `boolean removeAll(Collection<?> c)`
+- **Description**: Removes all elements present in the specified collection.
+- **Time Complexity**:
+  - **ArrayList**: **O(n * k)** (where `k` is the size of the collection).
+  - **LinkedList**: **O(n * k)**.
+
+### `void clear()`
+- **Description**: Removes all elements from the list.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)**.
+  - **LinkedList**: **O(n)**.
+
+---
+
+## 3. Access Methods
+
+### `E get(int index)`
+- **Description**: Returns the element at a specific index.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)**.
+  - **LinkedList**: **O(n)**.
+
+### `E set(int index, E element)`
+- **Description**: Replaces the element at a specific index.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)**.
+  - **LinkedList**: **O(n)**.
+
+---
+
+## 4. Search Methods
+
+### `boolean contains(Object o)`
+- **Description**: Checks if the list contains a specific element.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)**.
+  - **LinkedList**: **O(n)**.
+
+### `int indexOf(Object o)`
+- **Description**: Returns the index of the first occurrence of a specific element.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)**.
+  - **LinkedList**: **O(n)**.
+
+### `int lastIndexOf(Object o)`
+- **Description**: Returns the index of the last occurrence of a specific element.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)**.
+  - **LinkedList**: **O(n)**.
+
+---
+
+## 5. Size and Check Methods
+
+### `int size()`
+- **Description**: Returns the number of elements in the list.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)**.
+  - **LinkedList**: **O(1)**.
+
+### `boolean isEmpty()`
+- **Description**: Checks if the list is empty.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)**.
+  - **LinkedList**: **O(1)**.
+
+---
+
+## 6. Conversion Methods
+
+### `Object[] toArray()`
+- **Description**: Returns an array containing all elements of the list.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)**.
+  - **LinkedList**: **O(n)**.
+
+### `<T> T[] toArray(T[] a)`
+- **Description**: Returns an array containing all elements of the list, with a specific type.
+- **Time Complexity**:
+  - **ArrayList**: **O(n)**.
+  - **LinkedList**: **O(n)**.
+
+---
+
+## 7. Iteration Methods
+
+### `Iterator<E> iterator()`
+- **Description**: Returns an iterator over the elements of the list.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)**.
+  - **LinkedList**: **O(1)**.
+
+### `ListIterator<E> listIterator()`
+- **Description**: Returns a bidirectional iterator over the elements of the list.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)**.
+  - **LinkedList**: **O(1)**.
+
+---
+
+## 8. Sublist Methods
+
+### `List<E> subList(int fromIndex, int toIndex)`
+- **Description**: Returns a view of a sublist between the specified indices.
+- **Time Complexity**:
+  - **ArrayList**: **O(1)** (creation of the view).
+  - **LinkedList**: **O(1)** (creation of the view).
+
+---
+
+## Summary of Time Complexities
+
+| Method                        | ArrayList       | LinkedList                     |
+|-------------------------------|-----------------|--------------------------------|
+| `add(E e)`                    | O(1) (O(n) if resizing) | O(1)                          |
+| `add(int index, E element)`   | O(n)            | O(n) (O(1) if near ends)       |
+| `remove(int index)`           | O(n)            | O(n) (O(1) if near ends)       |
+| `remove(Object o)`            | O(n)            | O(n)                          |
+| `get(int index)`              | O(1)            | O(n)                          |
+| `set(int index, E element)`   | O(1)            | O(n)                          |
+| `contains(Object o)`          | O(n)            | O(n)                          |
+| `indexOf(Object o)`           | O(n)            | O(n)                          |
+| `size()`                      | O(1)            | O(1)                          |
+| `isEmpty()`                   | O(1)            | O(1)                          |
+| `iterator()`                  | O(1)            | O(1)                          |
+| `subList(int from, int to)`   | O(1)            | O(1)                          |
+
