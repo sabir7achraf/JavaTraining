@@ -1,5 +1,6 @@
 package ma.ecole.SortingAndSearchingAlgorithms;
-// we just base on comparaison betwen adjuscent (bubbel) and we swap if in the nested loop there is no swap that mean our array is sorted
+// we just base on comparaison betwen adjuscent (bubbel) and we swap 
+//if in the nested loop there is no swap(swap==false) that mean our array is sorted
 public class BubbelSort {
 
 
