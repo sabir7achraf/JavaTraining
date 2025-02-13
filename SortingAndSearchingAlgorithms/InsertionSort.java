@@ -44,6 +44,8 @@ public class InsertionSort {
 
         System.out.println("Sorted array:");
         printArray(arr);
+
+        System.out.println(1/2);
     }
 
 
