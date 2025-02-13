@@ -488,5 +488,228 @@ Refers to the amount of extra memory the algorithm requires, excluding the input
 
 ---
 
+# Search Algorithms in Java
+
+## Introduction
+This repository contains implementations of various search algorithms in Java, along with their descriptions, time complexities, and use cases.
+
+## Search Algorithms
+
+### 1. Linear Search
+**Description:** Iterate through each element in the list until the target is found.
+
+- **Time Complexity:** O(n)
+- **Use Case:** Works on unsorted data or small datasets.
+
+```java
+public int linearSearch(int[] arr, int target) {
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == target) {
+            return i; // Return the index of the target
+        }
+    }
+    return -1; // Target not found
+}
+```
+
+### 2. Binary Search
+**Description:** Efficiently search in a sorted array by repeatedly dividing the search interval in half.
+
+- **Time Complexity:** O(log n)
+- **Use Case:** Works only on sorted data.
+
+```java
+public int binarySearch(int[] arr, int target) {
+    int left = 0;
+    int right = arr.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target) {
+            return mid; // Target found
+        } else if (arr[mid] < target) {
+            left = mid + 1; // Search the right half
+        } else {
+            right = mid - 1; // Search the left half
+        }
+    }
+    return -1; // Target not found
+}
+```
+
+### 3. Interpolation Search
+**Description:** An improvement over binary search for uniformly distributed sorted data.
+
+- **Time Complexity:** O(log log n) on average, O(n) in the worst case.
+- **Use Case:** Works best on uniformly distributed sorted data.
+
+```java
+public int interpolationSearch(int[] arr, int target) {
+    int left = 0;
+    int right = arr.length - 1;
+    while (left <= right && target >= arr[left] && target <= arr[right]) {
+        int pos = left + ((target - arr[left]) * (right - left)) / (arr[right] - arr[left]);
+        if (arr[pos] == target) {
+            return pos; // Target found
+        } else if (arr[pos] < target) {
+            left = pos + 1; // Search the right half
+        } else {
+            right = pos - 1; // Search the left half
+        }
+    }
+    return -1; // Target not found
+}
+```
+
+### 4. Hashing (Hash Table Search)
+**Description:** Uses a hash function to map keys to indices in a hash table.
+
+- **Time Complexity:** O(1) on average, O(n) in the worst case.
+- **Use Case:** Fast lookups in large datasets.
+
+```java
+import java.util.HashMap;
+
+public int hashSearch(HashMap<Integer, Integer> map, int target) {
+    if (map.containsKey(target)) {
+        return map.get(target); // Return the value associated with the target key
+    }
+    return -1; // Target not found
+}
+```
+
+### 5. Ternary Search
+**Description:** Similar to binary search but divides the array into three parts instead of two.
+
+- **Time Complexity:** O(log₃ n)
+- **Use Case:** Searching in unimodal functions or sorted data.
+
+```java
+public int ternarySearch(int[] arr, int target) {
+    int left = 0;
+    int right = arr.length - 1;
+    while (left <= right) {
+        int mid1 = left + (right - left) / 3;
+        int mid2 = right - (right - left) / 3;
+        if (arr[mid1] == target) {
+            return mid1;
+        }
+        if (arr[mid2] == target) {
+            return mid2;
+        }
+        if (target < arr[mid1]) {
+            right = mid1 - 1;
+        } else if (target > arr[mid2]) {
+            left = mid2 + 1;
+        } else {
+            left = mid1 + 1;
+            right = mid2 - 1;
+        }
+    }
+    return -1;
+}
+```
+
+### 6. Exponential Search
+**Description:** Combines binary search with an initial exponential step to find the range.
+
+- **Time Complexity:** O(log n)
+- **Use Case:** Searching in unbounded or infinite sorted arrays.
+
+```java
+public int exponentialSearch(int[] arr, int target) {
+    if (arr[0] == target) {
+        return 0;
+    }
+    int i = 1;
+    while (i < arr.length && arr[i] <= target) {
+        i *= 2;
+    }
+    return binarySearch(arr, target, i / 2, Math.min(i, arr.length - 1));
+}
+```
+
+### 7. Jump Search
+**Description:** Jump through the array in fixed steps and perform a linear search.
+
+- **Time Complexity:** O(√n)
+- **Use Case:** Searching in sorted arrays where binary search is not feasible.
+
+```java
+public int jumpSearch(int[] arr, int target) {
+    int step = (int) Math.sqrt(arr.length);
+    int prev = 0;
+    while (arr[Math.min(step, arr.length) - 1] < target) {
+        prev = step;
+        step += (int) Math.sqrt(arr.length);
+        if (prev >= arr.length) {
+            return -1;
+        }
+    }
+    for (int i = prev; i < Math.min(step, arr.length); i++) {
+        if (arr[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
+### 8. Fibonacci Search
+**Description:** Uses Fibonacci numbers to divide the array into unequal parts.
+
+- **Time Complexity:** O(log n)
+- **Use Case:** Searching in sorted arrays with non-uniform access times.
+
+```java
+public int fibonacciSearch(int[] arr, int target) {
+    int fibMMm2 = 0;
+    int fibMMm1 = 1;
+    int fibM = fibMMm2 + fibMMm1;
+    while (fibM < arr.length) {
+        fibMMm2 = fibMMm1;
+        fibMMm1 = fibM;
+        fibM = fibMMm2 + fibMMm1;
+    }
+    int offset = -1;
+    while (fibM > 1) {
+        int i = Math.min(offset + fibMMm2, arr.length - 1);
+        if (arr[i] < target) {
+            fibM = fibMMm1;
+            fibMMm1 = fibMMm2;
+            fibMMm2 = fibM - fibMMm1;
+            offset = i;
+        } else if (arr[i] > target) {
+            fibM = fibMMm2;
+            fibMMm1 = fibMMm1 - fibMMm2;
+            fibMMm2 = fibM - fibMMm1;
+        } else {
+            return i;
+        }
+    }
+    if (fibMMm1 == 1 && arr[offset + 1] == target) {
+        return offset + 1;
+    }
+    return -1;
+}
+```
+
+## Summary of Time Complexities
+| Algorithm | Time Complexity | Use Case |
+|-----------|----------------|----------|
+| Linear Search | O(n) | Unsorted or small datasets |
+| Binary Search | O(log n) | Sorted arrays |
+| Interpolation Search | O(log log n) | Uniformly distributed sorted data |
+| Hashing | O(1) | Fast lookups in large datasets |
+| Ternary Search | O(log₃ n) | Unimodal functions or sorted data |
+| Exponential Search | O(log n) | Unbounded sorted arrays |
+| Jump Search | O(√n) | Sorted arrays where binary search is not feasible |
+| Fibonacci Search | O(log n) | Sorted arrays with non-uniform access |
+
+
+
+
+
+
+
 This README provides a concise summary of sorting algorithms, their complexities, and best use cases. Use this as a reference when choosing the appropriate sorting algorithm for your needs.
 
