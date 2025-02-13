@@ -4,7 +4,7 @@ public class InsertionSort {
 
 
     // we start by two element and we insert the third extera....
-    // we tak a element and we put it in the right position after a dof3a li amam for the lower elements
+    // we tak a element and we put it in the right position after a shifting (dof3a li amam) for the lower elements
     public static void insertionSort(int[] arr) {
      int n = arr.length;
      for (int i = 1; i < n; i++) {
