@@ -9,7 +9,7 @@ public class FixedThreadPoolExample {
             ExecutorService executorService = Executors.newFixedThreadPool(3);
 
             // Soumission de 10 tâches au pool
-            for (int i = 1; i <= 10; i++) {
+            for (int i = 1; i <= 5; i++) {
                 int taskNumber = i;
                 executorService.execute(() -> {
                     String threadName = Thread.currentThread().getName();
