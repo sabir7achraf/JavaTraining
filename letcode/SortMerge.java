@@ -11,9 +11,9 @@ public class SortMerge {
         for(int k=0;k<m+n;k++){
             for(int l=k;l<n+m;l++){
                 if (nums1[k] > nums1[l]){
-                    int r = nums1[k];
+                    int temp = nums1[k];
                     nums1[k] = nums1[l];
-                    nums1[l] = r;
+                    nums1[l] = temp;
                 }
             }
         }
