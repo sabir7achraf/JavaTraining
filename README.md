@@ -127,7 +127,7 @@ This document provides an overview of the commonly used methods in the `Arrays` 
 | Parallel Prefix       | O(n)            |
 | Miscellaneous         | O(n) or O(1)    |
 
-# List Methods in Java (ArrayList and LinkedList)
+# List Methods in Java (ArrayList )
 
 This document provides an overview of the commonly used methods in the `ArrayList` and `LinkedList` classes in Java, along with their time complexities.
 
