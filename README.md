@@ -127,7 +127,7 @@ This document provides an overview of the commonly used methods in the `Arrays` 
 | Parallel Prefix       | O(n)            |
 | Miscellaneous         | O(n) or O(1)    |
 
-# List Methods in Java (ArrayList and LinkedList)
+# List Methods in Java (ArrayList )
 
 This document provides an overview of the commonly used methods in the `ArrayList` and `LinkedList` classes in Java, along with their time complexities.
 
@@ -301,6 +301,95 @@ This document provides an overview of the commonly used methods in the `ArrayLis
 | `isEmpty()`                   | O(1)            | O(1)                          |
 | `iterator()`                  | O(1)            | O(1)                          |
 | `subList(int from, int to)`   | O(1)            | O(1)                          |
+
+# Méthodes de la classe `HashMap` en Java
+
+La classe `HashMap` en Java fait partie du framework `java.util` et implémente l'interface `Map`. Voici une liste des méthodes les plus couramment utilisées :
+
+## Méthodes de base
+
+- **`void clear()`**  
+  Supprime tous les éléments de la `HashMap`.
+
+- **`Object clone()`**  
+  Retourne une copie superficielle de cette instance de `HashMap`.
+
+- **`boolean containsKey(Object key)`**  
+  Retourne `true` si la `HashMap` contient une entrée pour la clé spécifiée.
+
+- **`boolean containsValue(Object value)`**  
+  Retourne `true` si la `HashMap` contient une ou plusieurs clés mappées à la valeur spécifiée.
+
+- **`Set<Map.Entry<K, V>> entrySet()`**  
+  Retourne une vue `Set` des entrées (paires clé-valeur) contenues dans la `HashMap`.
+
+- **`V get(Object key)`**  
+  Retourne la valeur associée à la clé spécifiée, ou `null` si la clé n'est pas trouvée.
+
+- **`boolean isEmpty()`**  
+  Retourne `true` si la `HashMap` est vide.
+
+- **`Set<K> keySet()`**  
+  Retourne une vue `Set` des clés contenues dans la `HashMap`.
+
+- **`V put(K key, V value)`**  
+  Associe la valeur spécifiée à la clé spécifiée dans la `HashMap`.
+
+- **`void putAll(Map<? extends K, ? extends V> m)`**  
+  Copie toutes les entrées de la `Map` spécifiée dans cette `HashMap`.
+
+- **`V remove(Object key)`**  
+  Supprime l'entrée pour la clé spécifiée et retourne la valeur associée.
+
+- **`int size()`**  
+  Retourne le nombre de paires clé-valeur dans la `HashMap`.
+
+- **`Collection<V> values()`**  
+  Retourne une vue `Collection` des valeurs contenues dans la `HashMap`.
+
+## Méthodes par défaut (depuis Java 8)
+
+- **`V getOrDefault(Object key, V defaultValue)`**  
+  Retourne la valeur associée à la clé spécifiée, ou `defaultValue` si la clé n'est pas trouvée.
+
+- **`V putIfAbsent(K key, V value)`**  
+  Associe la valeur spécifiée à la clé spécifiée si la clé n'est pas déjà associée à une valeur.
+
+- **`boolean remove(Object key, Object value)`**  
+  Supprime l'entrée pour la clé spécifiée uniquement si elle est actuellement mappée à la valeur spécifiée.
+
+- **`boolean replace(K key, V oldValue, V newValue)`**  
+  Remplace l'entrée pour la clé spécifiée uniquement si elle est actuellement mappée à la valeur spécifiée.
+
+- **`V replace(K key, V value)`**  
+  Remplace l'entrée pour la clé spécifiée uniquement si elle est actuellement mappée à une valeur.
+
+- **`void replaceAll(BiFunction<? super K, ? super V, ? extends V> function)`**  
+  Remplace chaque valeur par le résultat de la fonction donnée appliquée à chaque entrée.
+
+- **`V compute(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction)`**  
+  Calcule une nouvelle valeur pour la clé spécifiée en utilisant la fonction de remappage.
+
+- **`V computeIfAbsent(K key, Function<? super K, ? extends V> mappingFunction)`**  
+  Calcule une nouvelle valeur pour la clé spécifiée si elle n'est pas déjà associée à une valeur.
+
+- **`V computeIfPresent(K key, BiFunction<? super K, ? super V, ? extends V> remappingFunction)`**  
+  Calcule une nouvelle valeur pour la clé spécifiée si elle est déjà associée à une valeur.
+
+- **`V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> remappingFunction)`**  
+  Fusionne la valeur spécifiée avec la valeur existante associée à la clé spécifiée.
+
+## Méthodes héritées
+
+- **`boolean equals(Object o)`**  
+  Compare l'objet spécifié avec cette `HashMap` pour l'égalité.
+
+- **`int hashCode()`**  
+  Retourne le code de hachage pour cette `HashMap`.
+
+- **`String toString()`**  
+  Retourne une représentation en chaîne de caractères de cette `HashMap`.
+
 
 # Set Methods in Java (HashSet)
 
